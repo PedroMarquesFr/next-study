@@ -1,4 +1,5 @@
-//server side redering
+//static side generation
+//quando for igual pra todos uma SSG quando nao for usa o client side
 import { GetServerSideProps } from "next";
 
 export default function Home({ repositories, date }) {
