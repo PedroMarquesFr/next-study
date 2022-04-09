@@ -1,4 +1,5 @@
-//server side redering
+//static side generation
+//oq for igual pra todos tu faz o carregamento SSG e o q nao for tu faz o client side
 import { GetServerSideProps } from "next";
 
 export default function Home({ repositories, date }) {
