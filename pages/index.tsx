@@ -1,13 +1,24 @@
-import Head from "next/head";
+//client side rendering
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>HomePage</title>
-      </Head>
+  const [repositories, setRepositories] = useState<string[]>([]);
 
-      <main>Hello world</main>
-    </div>
+  useEffect(() => {
+    fetch("https://api.github.com/users/PedroMarquesFr/repos")
+      .then((res) => res.json())
+      .then((data) => {
+        const repositoryNames: string[] = data.map((item) => item.name);
+        setRepositories(repositoryNames);
+      });
+  }, []);
+
+  return (
+    <ul>
+      {repositories.map((repo) => (
+        <li key={repo}>{repo}</li>
+      ))}
+    </ul>
   );
 }
+
