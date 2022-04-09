@@ -1,11 +1,9 @@
-//static side generation
-//oq for igual pra todos tu faz o carregamento SSG e o q nao for tu faz o client side
+//server-side-rendering
 import { GetServerSideProps } from "next";
 
-export default function Home({ repositories, date }) {
+export default function Home({ repositories }) {
   return (
     <section>
-      <h4>{date}</h4>
       <ul>
         {repositories.map((repo) => (
           <li key={repo}>{repo}</li>
@@ -26,7 +24,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       repositories: repositoryNames,
-      date: new Date().toISOString(),
     },
   };
 };
