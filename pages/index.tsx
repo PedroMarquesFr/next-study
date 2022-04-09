@@ -1,6 +1,6 @@
 //static side generation
 //quando for igual pra todos uma SSG quando nao for usa o client side
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 
 export default function Home({ repositories, date }) {
   return (
@@ -15,7 +15,7 @@ export default function Home({ repositories, date }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(
     "https://api.github.com/users/PedroMarquesFr/repos"
   );
@@ -28,5 +28,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
       repositories: repositoryNames,
       date: new Date().toISOString(),
     },
+    revalidate: 5,
   };
 };
+
+
+//revalidacao statica so funciona em desenvolvimento, para simular umd eploy use:
+//npm run build
+//npm start
+
+// o fundamento disso e o stale-while-ravalidate, pesquisa
