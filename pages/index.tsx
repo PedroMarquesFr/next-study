@@ -1,4 +1,4 @@
-//server-side-rendering
+//serverside rendering
 import { GetServerSideProps } from "next";
 
 export default function Home({ repositories }) {
