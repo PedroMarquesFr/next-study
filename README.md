@@ -6,4 +6,4 @@
 3. Static side generation
 4. Paginas dinamicas
 5. APIs e unstable revalidate
-6. middleware
+6. Middleware
